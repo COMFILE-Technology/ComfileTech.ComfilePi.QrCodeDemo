@@ -36,6 +36,11 @@ namespace ComfileTech.ComfilePi.QrCodeDemo
 
         private void Form1_Shown(object? sender, EventArgs e)
         {
+            var workingArea = Screen.FromControl(this).WorkingArea;
+            Location = new Point(
+                workingArea.Left + ((workingArea.Width - Width) / 2),
+                workingArea.Top + ((workingArea.Height - Height) / 2) + 32);
+
             if (_started)
             {
                 return;
