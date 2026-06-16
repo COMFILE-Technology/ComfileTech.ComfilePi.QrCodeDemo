@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "ComfileTech.ComfilePi.QrCodeDemo": {
+      "commandName": "Project"
+    },
+    "Remote linux-arm64": {
+      "commandName": "RemoteDotnetDebugger",
+      "RemoteMachine": "192.168.0.97",
+      "RemoteUser": "pi",
+      "EnvironmentVariables": "DISPLAY=:0.0"
+    }
+  }
+}

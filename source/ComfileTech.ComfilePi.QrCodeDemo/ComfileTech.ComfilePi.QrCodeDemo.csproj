@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFrameworks>net10.0-windows;net10.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
+        <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="System.Windows.Forms" />
+        <Using Include="System.Drawing" />
+    </ItemGroup>
+
+    <!-- Resolves errors introduced by this breaking change:  https://learn.microsoft.com/en-us/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only. -->
+    <ItemGroup>
+        <RuntimeHostConfigurationOption Include="System.Drawing.EnableUnixSupport" Value="true" />
+    </ItemGroup>
+
+    <!-- Use the Microsoft's implementation of WinForms when compiling for target net10.0-windows -->
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-windows'">
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <!-- Use the Mono implementation of WinForms when compiling for target net10.0 -->
+    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+        <PackageReference Include="ComfileTech.WinForms" Version="2.*" />
+    </ItemGroup>
+
+    <!-- Remove Microsofts's implemenation of WinForms when compiling for net10.0 -->
+    <!-- Use net10.0 as the default if the framework is not specified for net10.0 -->
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0' Or '$(TargetFramework)' == ''">
+        <TargetFramework>net10.0</TargetFramework>
+        <UseWindowsForms>false</UseWindowsForms>
+    </PropertyGroup>
+
+</Project>
