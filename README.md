@@ -1,6 +1,6 @@
 # ComfileTech.ComfilePi.QrCodeDemo
 
-<video src="assets/qrcode-demo.mp4" controls width="480"></video>
+[![Watch the demo](assets/thumbnail.png)](assets/qrcode-demo.mp4)
 
 This is a .NET WinForms application to demonstrate QR code scanning on COMFILE Technology's [ComfilePi industrial touchscreen panel PCs](https://www.comfiletech.com/comfilepi), and how to program it.
 
