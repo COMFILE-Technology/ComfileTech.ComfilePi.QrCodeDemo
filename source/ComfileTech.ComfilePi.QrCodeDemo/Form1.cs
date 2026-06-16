@@ -13,6 +13,7 @@ namespace ComfileTech.ComfilePi.QrCodeDemo
         private const int PreviewHeight = 320;
         private const int FrameSize = PreviewWidth * PreviewHeight * 3;
         private const string ZBarLib = "libzbar.so.0";
+        private const string RepositoryUrl = "https://github.com/COMFILE-Technology/ComfileTech.ComfilePi.QrCodeDemo";
 
         private static readonly uint FourCC = 'Y' | ((uint)'8' << 8) | ((uint)'0' << 16) | ((uint)'0' << 24);
 
@@ -47,6 +48,15 @@ namespace ComfileTech.ComfilePi.QrCodeDemo
         private void Form1_FormClosing(object? sender, FormClosingEventArgs e)
         {
             StopStreaming();
+        }
+
+        private static void RepositoryLinkLabel_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = RepositoryUrl,
+                UseShellExecute = true
+            });
         }
 
         private void StartStreaming()
